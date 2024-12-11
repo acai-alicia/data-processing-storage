@@ -4,20 +4,21 @@ from inmemorydb import InMemoryDB
 
 db = InMemoryDB()
 
+# user interface to interact with InMemoryDB
 def user_interface():
     def handle_get():
         key = key_entry.get()
-        value = db.get(key)
+        value = db.get(key) # retrieve value
         messagebox.showinfo("Get Result", f"Value for key '{key}': {value}")
 
     def handle_put():
         key = key_entry.get()
         try:
-            value = int(value_entry.get())
-            db.put(key, value)
+            value = int(value_entry.get()) # convert the input to an integer
+            db.put(key, value) # store value
             messagebox.showinfo("Success", f"Key '{key}' set to {value} (in transaction)")
         except ValueError:
-            messagebox.showerror("Error", "Please enter a valid integer for the value.")
+            messagebox.showerror("Error", "Please enter a valid integer for the value.") # invalid value error
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
@@ -46,7 +47,7 @@ def user_interface():
     root.title("Data Processing and Storage Assignment")
 
     root.geometry("400x270")
-    root.resizable(False, False) # keeps box size fixed
+    root.resizable(False, False) # keeps box size fixed/prevents resize
 
     root.grid_columnconfigure(0, weight=1, minsize=100)
     root.grid_columnconfigure(1, weight=1, minsize=100)
