@@ -5,8 +5,8 @@ class InMemoryDB:
         self.transaction_active = False
 
     def get(self, key):
-        if self.transaction_active and key in self.transaction:
-            return self.transaction[key]
+        '''if self.transaction_active and key in self.transaction:
+            return self.transaction[key]'''
         return self.database.get(key, None)
 
     def put(self, key, val):
